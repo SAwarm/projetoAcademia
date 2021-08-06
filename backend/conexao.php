@@ -1,5 +1,4 @@
 <?php
 
-$link = mysqli_connect("localhost", "root", "", "mysql");
-
+$link = mysqli_connect("localhost", "root", "", "modelo");
 ?>

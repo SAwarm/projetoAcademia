@@ -24,32 +24,46 @@
       if (!$link) {
         die('Não foi possível conectar: ' . mysqli_error());
     }
-    print_r($link);
+    //print_r($link);
+    $query = "SELECT * from endereco";
+    $result = mysqli_query ($link, $query);
+   // $row = mysqli_fetch_array ($result);
+    //$test_count = $row ['rua'];
+    //echo "Esta é a contagem ", $test_count;
+
+  ?>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Rua</th>
+      <th scope="col">Número</th>
+      <th scope="col">Bairro</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <?php if ($result) { 
+    while($row = mysqli_fetch_array($result)) { ?>
+  <tbody>
+    <tr>
+      <th scope="row"><?php echo $row['cod'] ?></th>
+      <td><?php echo $row ['rua']; ?></td>
+      <td><?php echo $row ['numero']; ?> </td>
+      <td><?php echo $row ['bairro']; ?> </td>
+      <td><?php echo $row ['cidade']; ?> </td>
+      <td><?php echo $row ['estado']; ?> </td>
+    </tr>
+    
+  </tbody>
+  <?php } ?>
+<?php } ?>
+</table>
+<?php
     mysqli_close($link);
 ?>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">JR Fitness</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="tela login4.html">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="cadastro_funcionario.html">Cadastro de funcionário</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="cadastro_cliente.html">Cadastro de cliente</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="#">Acompanhamento</a>
-      </li>    
-    </ul>
-  </div>  
-</nav>
+<?php include('paginacaoTelas.php'); ?>
 
 <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
   <div class="row">
