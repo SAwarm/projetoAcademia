@@ -15,7 +15,7 @@
             <a class="nav-link" href="telas/cadastro_cliente.php">Cadastro de cliente</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Acompanhamento</a>
+            <a class="nav-link" href="telas/acompanhamento.php">Acompanhamento</a>
         </li>    
         </ul>
     </div>  

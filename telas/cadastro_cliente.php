@@ -18,51 +18,6 @@
   <h1>JR Fitness system</h1>
 </div>
 
-<?php
-    include('./../backend/conexao.php');
-    
-      if (!$link) {
-        die('Não foi possível conectar: ' . mysqli_error());
-    }
-    //print_r($link);
-    $query = "SELECT * from endereco";
-    $result = mysqli_query ($link, $query);
-   // $row = mysqli_fetch_array ($result);
-    //$test_count = $row ['rua'];
-    //echo "Esta é a contagem ", $test_count;
-
-  ?>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Rua</th>
-      <th scope="col">Número</th>
-      <th scope="col">Bairro</th>
-      <th scope="col">Cidade</th>
-      <th scope="col">Estado</th>
-    </tr>
-  </thead>
-  <?php if ($result) { 
-    while($row = mysqli_fetch_array($result)) { ?>
-  <tbody>
-    <tr>
-      <th scope="row"><?php echo $row['cod'] ?></th>
-      <td><?php echo $row ['rua']; ?></td>
-      <td><?php echo $row ['numero']; ?> </td>
-      <td><?php echo $row ['bairro']; ?> </td>
-      <td><?php echo $row ['cidade']; ?> </td>
-      <td><?php echo $row ['estado']; ?> </td>
-    </tr>
-    
-  </tbody>
-  <?php } ?>
-<?php } ?>
-</table>
-<?php
-    mysqli_close($link);
-?>
-
 <?php include('paginacaoTelas.php'); ?>
 
 <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
@@ -71,9 +26,8 @@
     
 
      <h2>Cadastro de clientes</h2><br><br>
-     <form action="cliente.php" method="POST">
-        <fieldset >
-          
+     <form action="./../backend/cadastroCliente.php" method="POST">
+        <fieldset>
 
         <P style="font-size: 20px;">Nome do Cliente: <input type="text" placeholder=" Digite o nome do cliente" name="nome_cliente">
 
@@ -81,8 +35,8 @@
 
         <P style="font-size: 20px;">RG: <input type="text" placeholder=" Digite o RG do cliente" name="rg_cliente">
 
-        <P style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do cliente" name="cpf_cliente">
-
+        <p style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do cliente" name="cpf_cliente">
+        <p style="font-size: 20px;">Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
         <p style="font-size: 20px;">Gênero:
         <select name="genero_cliente" style="background-color: #DDDDDD;">
           <option value="0">Selecione</option>
@@ -111,7 +65,55 @@
         <li>em dia&nbsp&nbsp&nbsp <input type="checkbox" name="paga" style="background-color: #DDDDDD;"><br></li>
         <li>atrasada <input type="checkbox" name="atrasada" style="background-color: #DDDDDD;"></li>
         </ul>
-        <br>
+        <p style="font-size: 20px;">Link da foto: <input type="text" placeholder=" Digite o link da foto do cliente" name="foto_cliente"></p>
+          <p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" name="email_cliente"></p>
+          <p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" name="telefone_cliente"></p>
+          <p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observação_cliente"></p>
+        <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Informações do endereço</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Rua:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="rua">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Número:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="numero">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Cidade:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="cidade">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Bairro:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="bairro">
+                </div>
+                <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Estado:</label>
+                  <select  class="form-control" name= "estado" style="background-color: #DDDDDD;">
+                    <option  class="form-control" value="0">Selecione</option>
+                    <option  class="form-control" value="SC">Santa Catarina</option>
+                    <option  class="form-control" value="RS">Rio Grande do Sul</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Salvar</button>
+              <!--button type="button" class="btn btn-primary"></button-->
+            </div>
+          </div>
+        </div>
+      </div>
+        <!--
         <p style="text-transform: uppercase; font-size: 20px;"><strong>Endereço</strong></p>
         <p style="font-size: 20px;">Estado:
               <select name= "seleção" style="background-color: #DDDDDD;">
@@ -126,11 +128,11 @@
           <p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do cliente" name="bairro_cliente"></p>
           <P style="font-size: 20px;">Rua: <input type="text" placeholder=" Digite a rua do cliente" name="rua_cliente"></P>
           <P style="font-size: 20px;">Número: <input type="text" placeholder=" Digite o número do cliente" name="numerocasa_cliente"></P>
-          <p style="font-size: 20px;">Link da foto: <input type="text" placeholder=" Digite o link da foto do cliente" name="foto_cliente"></p>
-          <p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" name="email_cliente"></p>
-          <p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" name="telefone_cliente"></p>
-          <p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observação_cliente"></p>
+         
         </p>
+       
+        
+        -->
         <button type="submit" class="btn btn-primary">Enviar</button>
         </fieldset>
       </form><br>
@@ -138,6 +140,12 @@
    </div>
   </div>
 </div>
+
+
+
+
+
+
 
 <div class="jumbotron text-center" style="margin-bottom: 0;">
   <p>JR Fitness system</p>
