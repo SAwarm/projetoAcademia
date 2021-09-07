@@ -26,7 +26,7 @@
     
 
      <h2>Cadastro de clientes</h2><br><br>
-     <form action="./../backend/cadastroCliente.php" method="POST">
+     <form action="./../backend/cadastroCliente.php" method="POST" enctype="multipart/form-data">
         <fieldset>
 
         <P style="font-size: 20px;">Nome do Cliente: <input type="text" placeholder=" Digite o nome do cliente" name="nome_cliente">
@@ -65,7 +65,7 @@
         <li>em dia&nbsp&nbsp&nbsp <input type="checkbox" name="paga" style="background-color: #DDDDDD;"><br></li>
         <li>atrasada <input type="checkbox" name="atrasada" style="background-color: #DDDDDD;"></li>
         </ul>
-        <p style="font-size: 20px;">Link da foto: <input type="text" placeholder=" Digite o link da foto do cliente" name="foto_cliente"></p>
+        <p style="font-size: 20px;">Link da foto: <input name="userfile" type="file" /></p>
           <p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" name="email_cliente"></p>
           <p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" name="telefone_cliente"></p>
           <p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observação_cliente"></p>
@@ -140,12 +140,6 @@
    </div>
   </div>
 </div>
-
-
-
-
-
-
 
 <div class="jumbotron text-center" style="margin-bottom: 0;">
   <p>JR Fitness system</p>
