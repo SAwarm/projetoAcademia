@@ -8,6 +8,8 @@
         $genero_cliente = 1;
     }else if($_POST['genero_cliente'] == "Feminino"){
         $genero_cliente = 2;
+    }else{
+        $genero_cliente = 3;
     }
 
     $tipo_fisico = $_POST['tipo_fisico'];
@@ -60,6 +62,6 @@
         echo "Cliente cadastrado com sucesso!";
 
     }else{
-        echo "Possível ataque de upload de arquivo!\n";
+        echo "Erro ao fazer o upload da foto!\n";
     }
 ?>

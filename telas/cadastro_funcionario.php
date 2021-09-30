@@ -40,6 +40,10 @@
 			</select>
 				Outro: <input type="text" name="outrogenero">
 			</p>
+			<p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" name="email_funcionario"></p>
+			<p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" name="telefone_funcionario"></p>
+			<p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observacao_funcionario"></p>
+			<p style="font-size: 20px;">Senha: <input type="password" placeholder=" Digite uma observação" name="senha_funcionario"></p>
 			<br>
 			<p style="font-size: 20px;">Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
 			<p style="font-size: 20px;">Link da foto: <input name="userfile" type="file" /></p>
@@ -73,19 +77,19 @@
 					<div class="modal-body">
 							<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Rua:</label>
-							<input type="text" class="form-control" id="recipient-name" name="rua">
+							<input type="text" class="form-control" id="rua-name" name="rua">
 							</div>
 							<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Número:</label>
-							<input type="text" class="form-control" id="recipient-name" name="numero">
+							<input type="text" class="form-control" id="numero-name" name="numero">
 							</div>
 							<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Cidade:</label>
-							<input type="text" class="form-control" id="recipient-name" name="cidade">
+							<input type="text" class="form-control" id="cidade-name" name="cidade">
 							</div>
 							<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Bairro:</label>
-							<input type="text" class="form-control" id="recipient-name" name="bairro">
+							<input type="text" class="form-control" id="bairro-name" name="bairro">
 							</div>
 							<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Estado:</label>

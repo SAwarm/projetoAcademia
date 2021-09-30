@@ -80,19 +80,19 @@
               <form>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Rua:</label>
-                  <input type="text" class="form-control" id="recipient-name" name="rua">
+                  <input type="text" class="form-control" id="rua-name" name="rua">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Número:</label>
-                  <input type="text" class="form-control" id="recipient-name" name="numero">
+                  <input type="text" class="form-control" id="numero-name" name="numero">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Cidade:</label>
-                  <input type="text" class="form-control" id="recipient-name" name="cidade">
+                  <input type="text" class="form-control" id="cidade-name" name="cidade">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Bairro:</label>
-                  <input type="text" class="form-control" id="recipient-name" name="bairro">
+                  <input type="text" class="form-control" id="bairro-name" name="bairro">
                 </div>
                 <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Estado:</label>
