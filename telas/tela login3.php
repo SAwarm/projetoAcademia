@@ -28,7 +28,7 @@
         <input class="form-check-input" type="checkbox" name="remember"> Lembrar
       </label>
     </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="" class="btn btn-primary">Enviar</button>
   </form>
 </div>
 

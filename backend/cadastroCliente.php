@@ -48,15 +48,17 @@
 
         $sql = "INSERT INTO endereco (rua, numero, bairro, cidade, estado) VALUES ('$rua', '$numero', '$bairro', '$cidade', '$estado')";
         mysqli_query($link, $sql) or die("Erro ao tentar cadastrar registro");
-        $idInserido=mysqli_insert_id($link);
+
+        $idInserido = mysqli_insert_id($link);
+
         $sql2 = "INSERT INTO cliente (nome, data_nasc, rg, cpf, mensalidade, foto, email, fone, obs, genero, tipo_fisico, tipo_treino, endereco) 
         VALUES ('$nome', '$nascimento', '$rg_cliente', '$cpf_cliente', '$pagamento', '$nameFoto', '$email_cliente', '$telefone', 
         '$observacao', '$genero_cliente', '$tipo_fisico', '$tipo_treino', '$idInserido')";
 
         mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro");
-
         mysqli_close($link);
         echo "Cliente cadastrado com sucesso!";
+
     }else{
         echo "Possível ataque de upload de arquivo!\n";
     }

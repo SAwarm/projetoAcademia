@@ -23,8 +23,6 @@
 <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
   <div class="row">
     <div class="col-sm-12">
-    
-
      <h2>Cadastro de clientes</h2><br><br>
      <form action="./../backend/cadastroCliente.php" method="POST" enctype="multipart/form-data">
         <fieldset>
