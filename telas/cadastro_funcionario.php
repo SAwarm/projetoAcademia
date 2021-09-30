@@ -26,44 +26,84 @@
     
 
      <h2>Cadastro de funcionários</h2><br><br>
-     <form action="cliente.php" method="POST">
-        <fieldset >
-        		<P style="font-size: 20px;">Nome do funcionário: <input type="text" placeholder="Digite o nome do funcionário" name="nome_funcionario">
-				<P style="font-size: 20px;">Data de nascimento: <input type="date" placeholder=" Digite a data de nascimento" name="nascimento_funcionario">
-				<P style="font-size: 20px;">RG: <input type="text" placeholder=" Digite o RG do funcionário" name="rg_funcionario">
-				<P style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do funcionário" name="cpf_funcionario">
-				<p style="font-size: 20px;">Gênero:
-				<select name="genero_funcionario" style="background-color: #DDDDDD;">
-					<option value="0">Selecione</option>
-					<option value="Masculino">Masculino</option>
-					<option value="Feminino">Feminino</option>
+     <form action=".././backend/cadastroFuncionario.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+			<P style="font-size: 20px;">Nome do funcionário: <input type="text" placeholder="Digite o nome do funcionário" name="nome_funcionario">
+			<P style="font-size: 20px;">Data de nascimento: <input type="date" placeholder=" Digite a data de nascimento" name="nascimento_funcionario">
+			<P style="font-size: 20px;">RG: <input type="text" placeholder=" Digite o RG do funcionário" name="rg_funcionario">
+			<P style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do funcionário" name="cpf_funcionario">
+			<p style="font-size: 20px;">Gênero:
+			<select name="genero_funcionario" style="background-color: #DDDDDD;">
+				<option value="0">Selecione</option>
+				<option value="Masculino">Masculino</option>
+				<option value="Feminino">Feminino</option>
+			</select>
+				Outro: <input type="text" name="outrogenero">
+			</p>
+			<br>
+			<p style="font-size: 20px;">Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
+			<p style="font-size: 20px;">Link da foto: <input name="userfile" type="file" /></p>
+			<!--p style="font-size: 20px;">Estado:
+				<select name= "seleção" style="background-color: #DDDDDD;">
+					<option value="0">selecione</option>
+					<option value="Santa Catarina">Santa Catarina</option>
+					<option value="Rio Grande do Sul">Rio Grande do Sul</option>
 				</select>
-					Outro: <input type="text" name="outrogenero">
+				Outro: <input type="text" name="outra_funcionario"-->
 				</p>
-				<br>
-				<p style="text-transform: uppercase; font-size: 20px;"><strong>Endereço</strong></p>
-				<p style="font-size: 20px;">Estado:
-							<select name= "seleção" style="background-color: #DDDDDD;">
-								<option value="0">selecione</option>
-								<option value="Santa Catarina">Santa Catarina</option>
-								<option value="Rio Grande do Sul">Rio Grande do Sul</option>
+				</p>
+				<button type="submit" class="btn btn-primary">Enviar</button>
+			<!--p style="font-size: 20px;">Cidade: <input type="text" placeholder=" Digite a cidade do funcionário" name="cidade_funcionario"></p>
+			<p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do funcionário" name="bairro_funcionario"></p>
+			<P style="font-size: 20px;">Rua: <input type="text" placeholder=" Digite a rua do funcionário" name="rua_funcionario"></P>
+			<P style="font-size: 20px;">Número: <input type="text" placeholder=" Digite o número da casa" name="numerocasa_funcionario"></P>
+			<p style="font-size: 20px;">Link da foto: <input type="text" placeholder=" Digite o link da foto" name="foto_funcionario"></p>
+			<p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do funcionário" name="email_funcionario"></p>
+			<p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do funcionário" name="telefone_funcionario" ></p>
+			<p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observação_funcionario"></p-->
+			<div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Informações do endereço</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+							<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Rua:</label>
+							<input type="text" class="form-control" id="recipient-name" name="rua">
+							</div>
+							<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Número:</label>
+							<input type="text" class="form-control" id="recipient-name" name="numero">
+							</div>
+							<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Cidade:</label>
+							<input type="text" class="form-control" id="recipient-name" name="cidade">
+							</div>
+							<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Bairro:</label>
+							<input type="text" class="form-control" id="recipient-name" name="bairro">
+							</div>
+							<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Estado:</label>
+							<select  class="form-control" name= "estado" style="background-color: #DDDDDD;">
+								<option  class="form-control" value="0">Selecione</option>
+								<option  class="form-control" value="SC">Santa Catarina</option>
+								<option  class="form-control" value="RS">Rio Grande do Sul</option>
 							</select>
-							outra: <input type="text" name="outra_funcionario">
-					</p>
-					</p>
-					<p style="font-size: 20px;">Cidade: <input type="text" placeholder=" Digite a cidade do funcionário" name="cidade_funcionario"></p>
-					<p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do funcionário" name="bairro_funcionario"></p>
-					<P style="font-size: 20px;">Rua: <input type="text" placeholder=" Digite a rua do funcionário" name="rua_funcionario"></P>
-					<P style="font-size: 20px;">Número: <input type="text" placeholder=" Digite o número da casa" name="numerocasa_funcionario"></P>
-					<p style="font-size: 20px;">Link da foto: <input type="text" placeholder=" Digite o link da foto" name="foto_funcionario"></p>
-					<p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do funcionário" name="email_funcionario"></p>
-					<p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do funcionário" name="telefone_funcionario" ></p>
-					<p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observação_funcionario"></p>
-
-        <button type="submit" class="btn btn-primary">Enviar</button>
+							</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Salvar</button>
+						<!--button type="button" class="btn btn-primary"></button-->
+					</div>
+				</div>
+			</div>
         </fieldset>
-      </form><br>
-  
+      </form>
    </div>
   </div>
 </div>
