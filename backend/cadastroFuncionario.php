@@ -1,5 +1,5 @@
 <?php
-
+    include('conexao.php');
     $nome_funcionario = $_POST['nome_funcionario'];
     $nascimento_funcionario = $_POST['nascimento_funcionario'];
     $rg_funcionario = $_POST['rg_funcionario'];
@@ -33,17 +33,17 @@
     if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 
         $sql = "INSERT INTO endereco (rua, numero, bairro, cidade, estado) VALUES ('$rua', '$numero', '$bairro', '$cidade', '$estado')";
-        mysqli_query($link, $sql) or die("Erro ao tentar cadastrar registro");
+        mysqli_query($link, $sql) or die("Erro ao tentar cadastrar endereço");
 
         $idInserido = mysqli_insert_id($link);
 
         $sql2 = "INSERT INTO funcionario (nome, data_nasc, rg, cpf, foto, email, fone, obs, genero, endereco, senha) 
         VALUES ('$nome_funcionario', '$nascimento_funcionario', '$rg_funcionario', '$cpf_funcionario', '$nameFoto', '$email_funcionario', '$telefone_funcionario', 
-        '$observacao_funcionario', '$genero_cliente', '$idInserido', '$senha_funcionario')";
+        '$observacao_funcionario', '$genero_funcionario', '$idInserido', '$senha_funcionario')";
 
         mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro");
         mysqli_close($link);
-        echo "Cliente cadastrado com sucesso!";
+        echo "Funcionário cadastrado com sucesso!";
 
     }else{
         echo "Erro ao fazer o upload da foto!\n";
