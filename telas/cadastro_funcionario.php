@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
   <link rel="stylesheet" type="text/css" href="estilos.css"/>
 
 </head>
@@ -28,10 +29,10 @@
      <h2>Cadastro de funcionários</h2><br><br>
      <form action=".././backend/cadastroFuncionario.php" method="POST" enctype="multipart/form-data">
         <fieldset>
-			<P style="font-size: 20px;">Nome do funcionário: <input type="text" placeholder="Digite o nome do funcionário" name="nome_funcionario">
-			<P style="font-size: 20px;">Data de nascimento: <input type="date" placeholder=" Digite a data de nascimento" name="nascimento_funcionario">
+			<P style="font-size: 20px;">Nome do funcionário: <input type="text" placeholder="Digite o nome do funcionário" id="nome_funcionario" name="nome_funcionario">
+			<P style="font-size: 20px;">Data de nascimento: <input type="date" placeholder=" Digite a data de nascimento" id="nascimento_funcionario" name="nascimento_funcionario">
 			<P style="font-size: 20px;">RG: <input type="text" placeholder=" Digite o RG do funcionário" name="rg_funcionario">
-			<P style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do funcionário" name="cpf_funcionario">
+			<P style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do funcionário" id="cpf_funcionario" name="cpf_funcionario">
 			<p style="font-size: 20px;">Gênero:
 			<select name="genero_funcionario" style="background-color: #DDDDDD;">
 				<option value="0">Selecione</option>
@@ -40,10 +41,10 @@
 			</select>
 				Outro: <input type="text" name="outrogenero">
 			</p>
-			<p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" name="email_funcionario"></p>
-			<p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" name="telefone_funcionario"></p>
+			<p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" id="email_funcionario" name="email_funcionario"></p>
+			<p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" id="telefone_funcionario" name="telefone_funcionario"></p>
 			<p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observacao_funcionario"></p>
-			<p style="font-size: 20px;">Senha: <input type="password" placeholder=" Digite uma observação" name="senha_funcionario"></p>
+			<p style="font-size: 20px;">Senha: <input type="password" placeholder=" Digite uma observação" id="senha_funcionario" name="senha_funcionario"></p>
 			<br>
 			<p style="font-size: 20px;">Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
 			<p style="font-size: 20px;">Link da foto: <input name="userfile" type="file" /></p>
@@ -56,7 +57,7 @@
 				Outro: <input type="text" name="outra_funcionario"-->
 				</p>
 				</p>
-				<button type="submit" class="btn btn-primary">Enviar</button>
+				<button type="submit" class="btn btn-primary btn-enviar-dados-funcionarios">Enviar</button>
 			<!--p style="font-size: 20px;">Cidade: <input type="text" placeholder=" Digite a cidade do funcionário" name="cidade_funcionario"></p>
 			<p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do funcionário" name="bairro_funcionario"></p>
 			<P style="font-size: 20px;">Rua: <input type="text" placeholder=" Digite a rua do funcionário" name="rua_funcionario"></P>
@@ -112,10 +113,56 @@
   </div>
 </div>
 
+<div class="modal fade modalMensagem" id="myModal1 modalMensagem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-mensagem">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="jumbotron text-center" style="margin-bottom: 0;">
   <p>JR Fitness system</p>
   <p>Sistema de controle de clientes</p>
 </div>
 
 </body>
+<script>
+    
+    $(document).on("click", ".btn-enviar-dados-funcionarios", function(e) {
+		varMensangem = "";
+		if($("#nome_funcionario").val() == ""){
+			e.preventDefault();
+			varMensangem += " Nome,"	
+		}
+		if($("#cpf_funcionario").val() == ""){
+			e.preventDefault();
+			varMensangem += " Cpf,"
+		}if($("#email_funcionario").val() == ""){
+			e.preventDefault();
+			varMensangem += " Email,"
+		}if($("#telefone_funcionario").val() == ""){
+			e.preventDefault();
+			varMensangem += " Telefone,"
+		}if($("#senha_funcionario").val() == ""){
+			e.preventDefault();
+			varMensangem += " Senha,"
+		}
+
+		varNovaMensagem = varMensangem.slice(0, -1);
+		$(".text-mensagem").html("Digite os campos de: " + varNovaMensagem)
+		$('.modalMensagem').modal('show');
+    });
+  </script>
 </html>

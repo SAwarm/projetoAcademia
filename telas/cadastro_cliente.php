@@ -9,7 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="estilos.css"/>
-
 </head>
 
 <body>
@@ -27,13 +26,13 @@
      <form action="./../backend/cadastroCliente.php" method="POST" enctype="multipart/form-data">
         <fieldset>
 
-        <P style="font-size: 20px;">Nome do Cliente: <input type="text" placeholder=" Digite o nome do cliente" name="nome_cliente">
+        <P style="font-size: 20px;">Nome do Cliente: <input type="text" placeholder=" Digite o nome do cliente" id="nome_cliente" name="nome_cliente">
 
-        <P style="font-size: 20px;">Data de Nascimento: <input type="date" placeholder=" Digite a data de nascimento" name="nascimento_cliente">
+        <P style="font-size: 20px;">Data de Nascimento: <input type="date" placeholder=" Digite a data de nascimento" id="nascimento_cliente" name="nascimento_cliente">
 
-        <P style="font-size: 20px;">RG: <input type="text" placeholder=" Digite o RG do cliente" name="rg_cliente">
+        <P style="font-size: 20px;">RG: <input type="text" placeholder=" Digite o RG do cliente" id="rg_cliente" name="rg_cliente">
 
-        <p style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do cliente" name="cpf_cliente">
+        <p style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do cliente" id="cpf_cliente" name="cpf_cliente">
         <p style="font-size: 20px;">Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
         <p style="font-size: 20px;">Gênero:
         <select name="genero_cliente" style="background-color: #DDDDDD;">
@@ -64,9 +63,9 @@
         <li>atrasada <input type="checkbox" name="atrasada" style="background-color: #DDDDDD;"></li>
         </ul>
         <p style="font-size: 20px;">Link da foto: <input name="userfile" type="file" /></p>
-          <p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" name="email_cliente"></p>
-          <p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" name="telefone_cliente"></p>
-          <p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observação_cliente"></p>
+          <p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" id="email_cliente" name="email_cliente"></p>
+          <p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" id="telefone_cliente" name="telefone_cliente"></p>
+          <p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" id="observação_cliente" name="observação_cliente"></p>
         <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -131,11 +130,30 @@
        
         
         -->
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary btn-enviar-dados-clientes">Enviar</button>
         </fieldset>
       </form><br>
   
    </div>
+  </div>
+</div>
+
+<div class="modal fade modalMensagem" id="myModal1 modalMensagem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-mensagem">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -145,4 +163,27 @@
 </div>
 
 </body>
+<script>
+  $(document).on("click", ".btn-enviar-dados-clientes", function(e) {
+		varMensangem = "";
+		if($("#nome_cliente").val() == ""){
+			e.preventDefault();
+			varMensangem += " Nome,"	
+		}
+		if($("#cpf_cliente").val() == ""){
+			e.preventDefault();
+			varMensangem += " Cpf,"
+		}if($("#email_cliente").val() == ""){
+			e.preventDefault();
+			varMensangem += " Email,"
+		}if($("#telefone_cliente").val() == ""){
+			e.preventDefault();
+			varMensangem += " Telefone,"
+		}
+		varNovaMensagem = varMensangem.slice(0, -1);
+		$(".text-mensagem").html("Digite os campos de: " + varNovaMensagem)
+		$('.modalMensagem').modal('show');
+  });
+
+</script>
 </html>
