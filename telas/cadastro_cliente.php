@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+	if(!empty($_SESSION['logado'])){ ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -187,3 +191,6 @@
 
 </script>
 </html>
+<?php } else { ?>
+<?php	header('Location: '.'erro404.php'); ?>
+<?php } ?>
