@@ -17,10 +17,7 @@
 
 <body>
 
-<div class="jumbotron text-center" style="background-color: #666666; margin-bottom:0">
-  <h1>JR Fitness system</h1>
-</div>
-
+<?php include('title.php'); ?>
 <?php include('paginacaoTelas.php'); ?>
 
 <div class="container" style="margin-top: 5%; margin-bottom: 5%;">

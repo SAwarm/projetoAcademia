@@ -13,11 +13,7 @@
 </head>
 
 <body>
-
-  <div class="jumbotron text-center" style="background-color: #666666; margin-bottom:0">
-    <h1>JR Fitness system</h1>
-  </div>
-
+  <?php include('telas/title.php'); ?>
   <?php include('telas/paginacao.php'); ?>
 
   <div class="container" style="margin-top:13%; margin-bottom: 13%;">
