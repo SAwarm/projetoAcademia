@@ -14,11 +14,10 @@
 
 <body>
   <?php include('telas/title.php'); ?>
-  <?php include('telas/paginacao.php'); ?>
 
-  <div class="container" style="margin-top:13%; margin-bottom: 13%;">
+  <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-md-12">
       
       <h2>Login</h2>
     <form>
