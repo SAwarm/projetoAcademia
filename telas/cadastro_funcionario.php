@@ -110,32 +110,32 @@
       </form>
    </div>
    <div class="col-sm-6">
-   <input class="text-buscar"></input>
-   <?php
-		//include('./../backend/conexao.php');
-		
-		//if (!$link) {
-		//	die('Não foi possível conectar: ' . mysqli_error());
-		//}
-		
-		//$query = "SELECT * from endereco LIMIT 10";
-		//$result = mysqli_query ($link, $query);
+   		<p>Buscar pelo nome: <input type="text" placeholder="Digite o nome do funcionário" class="text-buscar" name="text-buscar"></p>
+		<?php
+				//include('./../backend/conexao.php');
+				
+				//if (!$link) {
+				//	die('Não foi possível conectar: ' . mysqli_error());
+				//}
+				
+				//$query = "SELECT * from endereco LIMIT 10";
+				//$result = mysqli_query ($link, $query);
 
-	?>
-	<table class="table">
-		<thead>
-			<tr>
-			<th scope="col">ID</th>
-			<th scope="col">Nome</th>
-			</tr>
-		</thead>
-		<?php //if ($result) { 
-			//while($row = mysqli_fetch_array($result)) { ?>
-				<tbody id="popularDados">
-				</tbody>
-			<?php// } ?>
-		<?php //} ?>
-	</table>
+		?>
+		<table class="table">
+			<thead>
+				<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				</tr>
+			</thead>
+			<?php //if ($result) { 
+				//while($row = mysqli_fetch_array($result)) { ?>
+					<tbody id="popularDados">
+					</tbody>
+				<?php// } ?>
+			<?php //} ?>
+		</table>
    </div>
   </div>
 </div>
@@ -205,8 +205,8 @@
 				jq_json_obj = $.parseJSON(result);
 				cont = jq_json_obj.length
 				for (x = 0; x < cont; x++){
-					cols += '<tr><td scope="row">teste</td>';
-					cols += '<td>aahah</td></tr>';
+					cols += '<tr><td scope="row">'+jq_json_obj[x]['cod']+'</td>';
+					cols += '<td>'+jq_json_obj[x]['nome']+'</td></tr>';
 
 					$("#popularDados").html(cols);
 				} 

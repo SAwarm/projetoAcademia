@@ -1,5 +1,4 @@
 <?php
-
     include('./../backend/conexao.php');
             
     if (!$link) {
@@ -8,7 +7,7 @@
 
     $q = $_POST['q'];
     
-    $query = "SELECT * from funcionario where nome LIKE '%$q%'";
+    $query = "SELECT * from cliente where nome LIKE '%$q%'";
     
     $result = mysqli_query ($link, $query);
 
@@ -28,5 +27,4 @@
     }else{
         echo "null";
     }
-        
 ?>
