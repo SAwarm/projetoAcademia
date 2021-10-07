@@ -12,7 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
+  <script src="https://kit.fontawesome.com/dacbc0308b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="estilos.css"/>
 
 </head>
@@ -125,8 +125,10 @@
 		<table class="table">
 			<thead>
 				<tr>
-				<th scope="col">ID</th>
+				<th scope="col">Id</th>
 				<th scope="col">Nome</th>
+				<th scope="col">Cpf</th>
+				<th scope="col">Ações</th>
 				</tr>
 			</thead>
 			<?php //if ($result) { 
@@ -206,7 +208,9 @@
 				cont = jq_json_obj.length
 				for (x = 0; x < cont; x++){
 					cols += '<tr><td scope="row">'+jq_json_obj[x]['cod']+'</td>';
-					cols += '<td>'+jq_json_obj[x]['nome']+'</td></tr>';
+					cols += '<td>'+jq_json_obj[x]['nome']+'</td>';
+					cols += '<td>'+jq_json_obj[x]['cpf']+'</td>';
+					cols += '<td><button type="button" style="margin-right: 10px;" class="btn btn-success"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger"><i class="fas fa-times-circle"></i></button></td></tr>';
 
 					$("#popularDados").html(cols);
 				} 
