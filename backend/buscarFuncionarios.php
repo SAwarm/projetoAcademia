@@ -8,9 +8,11 @@
 
     $q = $_POST['q'];
     
-    $query = "SELECT * from funcionario where nome LIKE '%$q%'";
-    
-    $result = mysqli_query ($link, $query);
+    if(!empty($q)){
+        $query = "SELECT * from funcionario where nome LIKE '%$q%'";
+    }
+
+    $result = mysqli_query($link, $query);
 
     while($row = mysqli_fetch_array($result)) {
         $rows [] = $row;

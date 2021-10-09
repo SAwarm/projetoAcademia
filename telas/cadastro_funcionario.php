@@ -154,7 +154,7 @@
       <div class="modal-body text-mensagem">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-secondary btn-modal" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
@@ -193,6 +193,44 @@
 		$('.modalMensagem').modal('show');
     });
 
+	$(document).on("click", ".btn-edit", function(e) {
+		$.ajax({
+          url: ".././backend/editFuncionario.php",
+          type: "POST",
+          data: {q : $(this).attr('data-id-edit')},
+          success: function(result){
+			console.log($(this).attr('data-id-edit'))
+          },
+          error: function(error){
+
+          }
+      	});
+    });
+
+	
+
+	$(document).on("click", ".btn-exclude", function(e) {
+		$(".text-mensagem").html("Tem certeza que deseja excluir o funcionário?")
+		$('.modalMensagem').modal('show');
+		$('.btn-modal').addClass('btn-exclude-modal');
+		$('.btn-exclude-modal').html("Excluir");
+		$('.btn-exclude-modal').attr('data-id', $(this).attr('data-id-exclude'));
+    });
+
+	$(document).on("click", ".btn-exclude-modal", function(e) {
+		$.ajax({
+          url: ".././backend/excludeFuncionario.php",
+          type: "POST",
+          data: {q : $(this).attr('data-id')},
+          success: function(result){
+			alert(result)
+          },
+          error: function(error){
+
+          }
+      	});
+    });
+
 	$( ".text-buscar" ).keyup(function() {
 		$.ajax({
           url: ".././backend/buscarFuncionarios.php",
@@ -210,7 +248,8 @@
 					cols += '<tr><td scope="row">'+jq_json_obj[x]['cod']+'</td>';
 					cols += '<td>'+jq_json_obj[x]['nome']+'</td>';
 					cols += '<td>'+jq_json_obj[x]['cpf']+'</td>';
-					cols += '<td><button type="button" style="margin-right: 10px;" class="btn btn-success"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger"><i class="fas fa-times-circle"></i></button></td></tr>';
+					cols += '<td><button type="button" style="margin-right: 10px;" class="btn btn-success btn-edit" data-id-edit="'+jq_json_obj[x]['cod']+'"><i class="far fa-edit"></i></button>'
+					+'<button type="button" class="btn btn-danger btn-exclude" data-id-exclude="'+jq_json_obj[x]['cod']+'" ><i class="fas fa-times-circle"></i></button></td></tr>';
 
 					$("#popularDados").html(cols);
 				} 
