@@ -158,7 +158,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>			
 
 <div class="jumbotron text-center" style="margin-bottom: 0;">
   <p>JR Fitness system</p>
@@ -195,19 +195,17 @@
 
 	$(document).on("click", ".btn-edit", function(e) {
 		$.ajax({
-          url: ".././backend/editFuncionario.php",
+          url: ".././backend/buscarFuncionarios.php",
           type: "POST",
-          data: {q : $(this).attr('data-id-edit')},
+          data: {q : $(this).attr('data-id-edit'), action: "popularCampos"},
           success: function(result){
-			console.log($(this).attr('data-id-edit'))
+			$('.').val()
           },
           error: function(error){
 
           }
       	});
     });
-
-	
 
 	$(document).on("click", ".btn-exclude", function(e) {
 		$(".text-mensagem").html("Tem certeza que deseja excluir o funcionário?")
@@ -226,7 +224,7 @@
 			alert(result)
           },
           error: function(error){
-
+			alert('Error '+ error);
           }
       	});
     });
@@ -235,7 +233,7 @@
 		$.ajax({
           url: ".././backend/buscarFuncionarios.php",
           type: "POST",
-          data: {q : $('.text-buscar').val()},
+          data: {q : $('.text-buscar').val(), action: null},
           success: function(result){
 			cols = "";
 			if(result == "null"){
@@ -257,7 +255,7 @@
 
           },
           error: function(error){
-            console.log(error);
+            alert('Error '+ error);
           }
       });
 	});
