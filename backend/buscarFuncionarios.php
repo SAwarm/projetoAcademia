@@ -37,7 +37,7 @@
         if($result != false){
             $result_sql = mysqli_fetch_array($result);
         }
-
+        
         if(!empty($rows)){
             if($q == ""){
                 echo "null";
