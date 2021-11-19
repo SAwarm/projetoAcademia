@@ -199,8 +199,8 @@
           type: "POST",
           data: {q : $(this).attr('data-id-edit'), action: "popularCampos"},
           success: function(result){
-				jq_json_obj = $.parseJSON(result);
-				cont = jq_json_obj.length
+			jq_json_obj = $.parseJSON(result);
+			cont = jq_json_obj.length
 			$('#nome_funcionario').val(jq_json_obj['nome']);
 			$('#nascimento_funcionario').val(jq_json_obj['data_nasc']);
 			$('#rg').val(jq_json_obj['rg']);
@@ -213,7 +213,7 @@
 			}else{
 				$('#genero_funcionario').val('Outros');
 			}
-			
+
 			$('#email_funcionario').val(jq_json_obj['email']);
 			$('#telefone_funcionario').val(jq_json_obj['fone']);
 			$('#observacao_funcionario').val(jq_json_obj['obs']);

@@ -28,46 +28,47 @@
      <form action="./../backend/cadastroCliente.php" method="POST" enctype="multipart/form-data">
         <fieldset>
 
-        <P style="font-size: 20px;">Nome do Cliente: <input type="text" placeholder=" Digite o nome do cliente" id="nome_cliente" name="nome_cliente">
+        <P >Nome do Cliente: <input type="text" placeholder=" Digite o nome do cliente" id="nome_cliente" name="nome_cliente">
 
-        <P style="font-size: 20px;">Data de Nascimento: <input type="date" placeholder=" Digite a data de nascimento" id="nascimento_cliente" name="nascimento_cliente">
+        <P >Data de Nascimento: <input type="date" placeholder=" Digite a data de nascimento" id="nascimento_cliente" name="nascimento_cliente">
 
-        <P style="font-size: 20px;">RG: <input type="text" placeholder=" Digite o RG do cliente" id="rg_cliente" name="rg_cliente">
+        <P >RG: <input type="text" placeholder=" Digite o RG do cliente" id="rg_cliente" name="rg_cliente">
 
-        <p style="font-size: 20px;">CPF: <input type="text" placeholder=" Digite o CPF do cliente" id="cpf_cliente" name="cpf_cliente">
-        <p style="font-size: 20px;">Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
-        <p style="font-size: 20px;">Gênero:
-        <select name="genero_cliente" style="background-color: #DDDDDD;">
+        <p >CPF: <input type="text" placeholder=" Digite o CPF do cliente" id="cpf_cliente" name="cpf_cliente">
+        <p >Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
+        <p >Gênero:
+        <select name="genero_cliente" id="genero_cliente" style="background-color: #DDDDDD;">
           <option value="0">Selecione</option>
           <option value="Masculino">Masculino</option>
           <option value="Feminino">Feminino</option>
+          <option value="Outros">Outros</option>
         </select>
           Outro: <input type="text" name="outrogenero">
         </p>
-        <p style="font-size: 20px;">Tipo Físico:
-        <select name="tipo_fisico" style="background-color: #DDDDDD;">
+        <p >Tipo Físico:
+        <select name="tipo_fisico" id="tipo_fisico" style="background-color: #DDDDDD;">
           <option value="0">Selecione</option>
           <option value="Ectomorfo">Ectomorfo</option>
           <option value="Mesomorfo">Mesomorfo</option>
           <option value="Endomorfo">Endomorfo</option>
         </select>
         </p>
-        <p style="font-size: 20px;">Tipo de treino:
-        <select name="tipo_treino" style="background-color: #DDDDDD;">
+        <p >Tipo de treino:
+        <select name="tipo_treino" id="tipo_trien" class="tipo_trien" style="background-color: #DDDDDD;">
           <option value="0">Selecione</option>
-          <option value="Musc">Musculação</option>
-          <option value="Func">Funcional</option>
+          <option value="Musculação">Musculação</option>
+          <option value="Funcional">Funcional</option>
         </select>
         </p>
-        <p style="font-size: 20px;">Mensalidade: </p>
+        <p >Mensalidade: </p>
         <ul type="circle">
         <li>em dia&nbsp&nbsp&nbsp <input type="checkbox" name="paga" style="background-color: #DDDDDD;"><br></li>
         <li>atrasada <input type="checkbox" name="atrasada" style="background-color: #DDDDDD;"></li>
         </ul>
-        <p style="font-size: 20px;">Link da foto: <input name="userfile" type="file" /></p>
-          <p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" id="email_cliente" name="email_cliente"></p>
-          <p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do cliente" id="telefone_cliente" name="telefone_cliente"></p>
-          <p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" id="observação_cliente" name="observação_cliente"></p>
+        <p >Link da foto: <input name="userfile" type="file" /></p>
+          <p >E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" id="email_cliente" name="email_cliente"></p>
+          <p >Telefone: <input type="text" placeholder=" Digite o telefone do cliente" id="telefone_cliente" name="telefone_cliente"></p>
+          <p >Observação: <input type="text" placeholder=" Digite uma observação" id="observacao_cliente" name="observação_cliente"></p>
         <div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -97,7 +98,7 @@
                 </div>
                 <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Estado:</label>
-                  <select  class="form-control" name= "estado" style="background-color: #DDDDDD;">
+                  <select  class="form-control" name= "estado" id="estado" style="background-color: #DDDDDD;">
                     <option  class="form-control" value="0">Selecione</option>
                     <option  class="form-control" value="SC">Santa Catarina</option>
                     <option  class="form-control" value="RS">Rio Grande do Sul</option>
@@ -221,7 +222,7 @@
 		$.ajax({
           url: ".././backend/buscarClientes.php",
           type: "POST",
-          data: {q : $('.text-buscar').val()},
+          data: {q : $('.text-buscar').val(), action: null},
           success: function(result){
 			cols = "";
 			if(result == "null"){
@@ -234,7 +235,7 @@
 					cols += '<tr><td scope="row">'+jq_json_obj[x]['cod']+'</td>';
 					cols += '<td>'+jq_json_obj[x]['nome']+'</td>';
           cols += '<td>'+jq_json_obj[x]['cpf']+'</td>';
-					cols += '<td><button type="button" style="margin-right: 10px;" class="btn btn-success"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger"><i class="fas fa-times-circle"></i></button></td></tr>';
+					cols += '<td><button type="button" data-id-edit="'+jq_json_obj[x]['cod']+'" style="margin-right: 10px;" class="btn btn-success btn-edit"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger btn-exclude"><i class="fas fa-times-circle"></i></button></td></tr>';
 
 					$("#popularDados").html(cols);
 				} 
@@ -246,6 +247,58 @@
           }
       });
 	});
+
+  $(document).on("click", ".btn-edit", function(e) {
+		$.ajax({
+          url: ".././backend/buscarClientes.php",
+          type: "POST",
+          data: {q : $(this).attr('data-id-edit'), action: "popularCampos"},
+          success: function(result){
+            jq_json_obj = $.parseJSON(result);
+            
+            $('#nome_cliente').val(jq_json_obj['nome'])
+            $('#nascimento_cliente').val(jq_json_obj['data_nasc'])
+            $('#rg_cliente').val(jq_json_obj['rg'])
+            $('#cpf_cliente').val(jq_json_obj['cpf'])
+            $('#rua-name').val(jq_json_obj['rua'])
+            $('#numero-name').val(jq_json_obj['numero'])
+            $('#cidade-name').val(jq_json_obj['cidade'])
+            $('#bairro-name').val(jq_json_obj['bairro'])
+            $('#estado').val(jq_json_obj['estado'])
+            if(jq_json_obj['genero'] == 1){
+              $('#genero_cliente').val('Masculino');
+            }else if(jq_json_obj['genero'] == 2){
+              $('#genero_cliente').val('Feminino');
+            }else{
+              $('#genero_cliente').val('Outros');
+            }
+
+            $('#email_cliente').val(jq_json_obj['email'])
+            $('#telefone_cliente').val(jq_json_obj['fone'])
+            $('#observacao_cliente').val(jq_json_obj['obs'])
+
+            if(jq_json_obj['tipo_treino'] == 1){
+              $('.tipo_trien').val("Musculação")
+            }else{
+              $('.tipo_trien').val("Funcional")
+            }
+
+            if(jq_json_obj['tipo_fisico'] == 1){
+              $('#tipo_fisico').val('Ectomorfo');
+            }else if(jq_json_obj['tipo_fisico'] == 2){
+              ('#tipo_fisico').val('Mesomorfo');
+            }else{
+              ('#tipo_fisico').val('Endomorfo')
+            }
+          
+            
+
+          },
+          error: function(error){
+
+          }
+      	});
+    });
 
 </script>
 </html>

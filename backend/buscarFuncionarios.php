@@ -12,7 +12,10 @@
         $q = $_POST['q'];
     
         if(!empty($q)){
-            $query = "SELECT * from funcionario inner join endereco on funcionario.endereco = endereco.cod where funcionario.cod = '$q'";
+            $query = "SELECT * from funcionario inner join endereco on funcionario.endereco = endereco.cod
+            inner join tipo_fisico on tipo_fisico.cod = cliente.tipo_fisico inner join tipo_treino on 
+            tipo_treino.cod = cliente.tipo_treino 
+            where funcionario.cod = '$q'";
         }
 
         $result = mysqli_query($link, $query);
