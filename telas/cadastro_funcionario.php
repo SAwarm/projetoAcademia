@@ -30,10 +30,10 @@
         <fieldset>
 			<P>Nome do funcionário: <input type="text" placeholder="Digite o nome do funcionário" id="nome_funcionario" name="nome_funcionario">
 			<P>Data de nascimento: <input type="date" placeholder=" Digite a data de nascimento" id="nascimento_funcionario" name="nascimento_funcionario">
-			<P>RG: <input type="text" placeholder=" Digite o RG do funcionário" name="rg_funcionario">
+			<P>RG: <input type="text" id="rg" placeholder=" Digite o RG do funcionário" name="rg_funcionario">
 			<P>CPF: <input type="text" placeholder=" Digite o CPF do funcionário" id="cpf_funcionario" name="cpf_funcionario">
 			<p>Gênero:
-			<select name="genero_funcionario" style="background-color: #DDDDDD;">
+			<select name="genero_funcionario" id="genero_funcionario" style="background-color: #DDDDDD;">
 				<option value="0">Selecione</option>
 				<option value="Masculino">Masculino</option>
 				<option value="Feminino">Feminino</option>
@@ -42,7 +42,7 @@
 			</p>
 			<p>E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" id="email_funcionario" name="email_funcionario"></p>
 			<p>Telefone: <input type="text" placeholder=" Digite o telefone do cliente" id="telefone_funcionario" name="telefone_funcionario"></p>
-			<p>Observação: <input type="text" placeholder=" Digite uma observação" name="observacao_funcionario"></p>
+			<p>Observação: <input type="text" id="observacao_funcionario" placeholder=" Digite uma observação" name="observacao_funcionario"></p>
 			<p>Senha: <input type="password" placeholder=" Digite uma observação" id="senha_funcionario" name="senha_funcionario"></p>
 			<br>
 			<p>Endereço: <input type="button" class="btn" style="background-color: #2F4F4F" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
@@ -93,7 +93,7 @@
 							</div>
 							<div class="form-group">
 							<label for="recipient-name" class="col-form-label">Estado:</label>
-							<select  class="form-control" name= "estado" style="background-color: #DDDDDD;">
+							<select  class="form-control" name= "estado" id="estado" style="background-color: #DDDDDD;">
 								<option  class="form-control" value="0">Selecione</option>
 								<option  class="form-control" value="SC">Santa Catarina</option>
 								<option  class="form-control" value="RS">Rio Grande do Sul</option>
@@ -199,7 +199,31 @@
           type: "POST",
           data: {q : $(this).attr('data-id-edit'), action: "popularCampos"},
           success: function(result){
-			$('.').val()
+				jq_json_obj = $.parseJSON(result);
+				cont = jq_json_obj.length
+			$('#nome_funcionario').val(jq_json_obj['nome']);
+			$('#nascimento_funcionario').val(jq_json_obj['data_nasc']);
+			$('#rg').val(jq_json_obj['rg']);
+			$('#cpf_funcionario').val(jq_json_obj['cpf']);
+
+			if(jq_json_obj['genero'] == 1){
+				$('#genero_funcionario').val('Masculino');
+			}else if(jq_json_obj['genero'] == 2){
+				$('#genero_funcionario').val('Feminino');
+			}else{
+				$('#genero_funcionario').val('Outros');
+			}
+			
+			$('#email_funcionario').val(jq_json_obj['email']);
+			$('#telefone_funcionario').val(jq_json_obj['fone']);
+			$('#observacao_funcionario').val(jq_json_obj['obs']);
+			$('#senha_funcionario').val(jq_json_obj['senha']);
+			$('#rua-name').val(jq_json_obj['rua']);
+			$('#numero-name').val(jq_json_obj['numero']);
+			$('#cidade-name').val(jq_json_obj['cidade']);
+			$('#bairro-name').val(jq_json_obj['bairro']);
+			$('#estado').val(jq_json_obj['estado']);
+
           },
           error: function(error){
 

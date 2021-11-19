@@ -12,16 +12,15 @@
         $q = $_POST['q'];
     
         if(!empty($q)){
-            $query = "SELECT * from funcionario where cod = '$q'";
+            $query = "SELECT * from funcionario inner join endereco on funcionario.endereco = endereco.cod where funcionario.cod = '$q'";
         }
 
         $result = mysqli_query($link, $query);
 
         $row = mysqli_fetch_array($result);
 
-        print_r($row);
-            echo json_encode($row);
-        }
+        //print_r($row);
+        echo json_encode($row);
     }else{
         $q = $_POST['q'];
     
@@ -37,7 +36,7 @@
         if($result != false){
             $result_sql = mysqli_fetch_array($result);
         }
-        
+
         if(!empty($rows)){
             if($q == ""){
                 echo "null";
