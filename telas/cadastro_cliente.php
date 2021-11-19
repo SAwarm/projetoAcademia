@@ -35,7 +35,7 @@
         <P >RG: <input type="text" placeholder=" Digite o RG do cliente" id="rg_cliente" name="rg_cliente">
 
         <p >CPF: <input type="text" placeholder=" Digite o CPF do cliente" id="cpf_cliente" name="cpf_cliente">
-        <p >Endereço: <input type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
+        <p >Endereço: <input type="button" class="btn btn-dark" style="background-color: #2F4F4F; color: white;" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
         <p >Gênero:
         <select name="genero_cliente" id="genero_cliente" style="background-color: #DDDDDD;">
           <option value="0">Selecione</option>
@@ -107,7 +107,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Salvar</button>
+              <button type="button" class="btn btn-secondary" style="background-color: #2F4F4F; color: white;" data-dismiss="modal">Salvar</button>
               <!--button type="button" class="btn btn-primary"></button-->
             </div>
           </div>
@@ -133,7 +133,7 @@
        
         
         -->
-        <button type="submit" class="btn btn-primary btn-enviar-dados-clientes">Enviar</button>
+        <button type="submit" style="background-color: #2F4F4F; color: white;" class="btn btn-primary btn-enviar-dados-clientes">Enviar</button>
         </fieldset>
       </form><br>
   
@@ -175,7 +175,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+        <h5 class="modal-title .text-mensagem" id="exampleModalLabel" >Mensagem do Sistema!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -183,8 +183,7 @@
       <div class="modal-body text-mensagem">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button type="button" class="btn btn-danger btn-modal" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
@@ -235,7 +234,7 @@
 					cols += '<tr><td scope="row">'+jq_json_obj[x]['cod']+'</td>';
 					cols += '<td>'+jq_json_obj[x]['nome']+'</td>';
           cols += '<td>'+jq_json_obj[x]['cpf']+'</td>';
-					cols += '<td><button type="button" data-id-edit="'+jq_json_obj[x]['cod']+'" style="margin-right: 10px;" class="btn btn-success btn-edit"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger btn-exclude"><i class="fas fa-times-circle"></i></button></td></tr>';
+					cols += '<td><button type="button" data-id-edit="'+jq_json_obj[x]['cod']+'" style="margin-right: 10px;" class="btn btn-success btn-edit"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger btn-exclude"  data-id="'+jq_json_obj[x]['cod']+'"><i class="fas fa-times-circle"></i></button></td></tr>';
 
 					$("#popularDados").html(cols);
 				} 
@@ -299,6 +298,38 @@
           }
       	});
     });
+
+    $(document).on("click", ".btn-exclude", function(e) {
+
+      $(".text-mensagem").html("Tem certeza que deseja excluir o funcionário?")
+      $('.modalMensagem').modal('show');
+      $('.btn-modal').addClass('btn-exclude-modal');
+      $('.btn-exclude-modal').html("Excluir");
+      $('.btn-exclude-modal').attr('data-id', $(this).attr('data-id'));
+
+    })
+
+    $(document).on("click", ".btn-exclude-modal", function(e) {
+      id = $(this).attr('data-id');
+
+      $.ajax({
+            url: ".././backend/excluirCliente.php",
+            type: "POST",
+            data: {q : id},
+            success: function(result){
+              if(result == "true"){
+                alert("Excluído com sucesso!");
+                $('.modalMensagem').modal('hide');
+              }else{
+                alert("Erro ao excluir registro!");
+                $('.modalMensagem').modal('hide');
+              }
+            },
+            error: function(error){
+
+            }
+        });
+    })
 
 </script>
 </html>

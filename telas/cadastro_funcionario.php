@@ -45,7 +45,7 @@
 			<p>Observação: <input type="text" id="observacao_funcionario" placeholder=" Digite uma observação" name="observacao_funcionario"></p>
 			<p>Senha: <input type="password" placeholder=" Digite uma observação" id="senha_funcionario" name="senha_funcionario"></p>
 			<br>
-			<p>Endereço: <input type="button" class="btn" style="background-color: #2F4F4F" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
+			<p>Endereço: <input type="button" class="btn" style="background-color: #2F4F4F; color: white;" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
 			<p>Link da foto: <input name="userfile" type="file" /></p>
 			<!--p style="font-size: 20px;">Estado:
 				<select name= "seleção" style="background-color: #DDDDDD;">
@@ -56,7 +56,7 @@
 				Outro: <input type="text" name="outra_funcionario"-->
 				</p>
 				</p>
-				<button type="submit" style="background-color: #2F4F4F" class="btn btn-primary btn-enviar-dados-funcionarios">Enviar</button>
+				<button type="submit" style="background-color: #2F4F4F; color: white;" class="btn btn-primary btn-enviar-dados-funcionarios">Enviar</button>
 			<!--p style="font-size: 20px;">Cidade: <input type="text" placeholder=" Digite a cidade do funcionário" name="cidade_funcionario"></p>
 			<p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do funcionário" name="bairro_funcionario"></p>
 			<P style="font-size: 20px;">Rua: <input type="text" placeholder=" Digite a rua do funcionário" name="rua_funcionario"></P>
@@ -154,7 +154,7 @@
       <div class="modal-body text-mensagem">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-modal" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-danger btn-modal" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
