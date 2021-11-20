@@ -56,6 +56,8 @@
 				Outro: <input type="text" name="outra_funcionario"-->
 				</p>
 				</p>
+				<input class="inputUpdate2" name="inputHiddenEndereco" value="" type="hidden">
+				<input class="inputUpdate" value="" type="hidden">
 				<button type="submit" style="background-color: #2F4F4F; color: white;" class="btn btn-primary btn-enviar-dados-funcionarios">Enviar</button>
 			<!--p style="font-size: 20px;">Cidade: <input type="text" placeholder=" Digite a cidade do funcionário" name="cidade_funcionario"></p>
 			<p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do funcionário" name="bairro_funcionario"></p>
@@ -188,9 +190,12 @@
 			varMensangem += " Senha,"
 		}
 
-		varNovaMensagem = varMensangem.slice(0, -1);
-		$(".text-mensagem").html("Digite os campos de: " + varNovaMensagem)
-		$('.modalMensagem').modal('show');
+		if(varMensangem != ""){
+			varNovaMensagem = varMensangem.slice(0, -1);
+			$(".text-mensagem").html("Digite os campos de: " + varNovaMensagem)
+			$('.modalMensagem').modal('show');
+		}
+
     });
 
 	$(document).on("click", ".btn-edit", function(e) {
@@ -214,6 +219,9 @@
 				$('#genero_funcionario').val('Outros');
 			}
 
+			$('.inputUpdate').attr("name", 'inputHidden');
+			$('.inputUpdate').val(jq_json_obj[0]);
+			$('.inputUpdate2').val(jq_json_obj['endereco']);
 			$('#email_funcionario').val(jq_json_obj['email']);
 			$('#telefone_funcionario').val(jq_json_obj['fone']);
 			$('#observacao_funcionario').val(jq_json_obj['obs']);
