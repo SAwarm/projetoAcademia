@@ -11,6 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/dacbc0308b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="estilos.css"/>
 
 </head>
@@ -24,8 +25,11 @@
   <div class="row">
     <div class="col-sm-12">
     
+    <h2>Cadastro de clientes</h2>
+   
+     <button class="btn btn-novo-acompanhamento" style="background-color: #2F4F4F; color: white; margin: 20px;">Novo Acompanhamento</button>
+      <span style="margin-left: 40%;">Buscar Acompanhamento: <input type="text" placeholder="Digite o nome do cliente" class="text-buscar" name="text-buscar"></span>
 
-     <h2>Cadastro de clientes</h2><br><br>
      <?php
     include('./../backend/conexao.php');
     
@@ -74,7 +78,82 @@
 </div>
 
 </body>
+<div class="modal fade" id="modalAcompanhamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Cadastro Novo Acompanhamento</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Código do Cliente:</label>
+                <input type="text" class="form-control" id="codigo-cliente" name="codigo-cliente">
+							</div>
+							<div class="form-group">
+                <label for="recipient-name" class="col-form-label">Peso:</label>
+                <input type="text" class="form-control" id="peso-cliente" name="peso-cliente">
+							</div>
+							<div class="form-group">
+                <label for="recipient-name" class="col-form-label">Altura:</label>
+                <input type="text" class="form-control" id="altura-cliente" name="altura-cliente">
+							</div>
+							<div class="form-group">
+                <label for="recipient-name" class="col-form-label">Maa:</label>
+                <input type="text" class="form-control" id="maa-cliente" name="maa-cliente">
+							</div>
+							<div class="form-group">
+                <label for="recipient-name" class="col-form-label">Mab:</label>
+                <input type="text" class="form-control" id="mab-cliente" name="mab-cliente">
+							</div>
+              <div class="form-group">
+						  	<label for="recipient-name" class="col-form-label">Mac:</label>
+						  	<input type="text" class="form-control" id="mac-cliente" name="mac-cliente">
+							</div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Observação:</label>
+                <input type="text" class="form-control" id="observacao-cliente" name="observacao-cliente">
+							</div>
+              
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary btn-salvar-acompanhamento" data-dismiss="modal">Salvar</button>
+						<!--button type="button" class="btn btn-primary"></button-->
+					</div>
+				</div>
+			</div>
 </html>
+
+<script>
+  $(document).on("click", ".btn-novo-acompanhamento", function(e) {
+      $('#modalAcompanhamento').modal('show');
+  })
+
+  $(document).on("click", ".btn-salvar-acompanhamento", function(e) {
+      codigo_cliente = $('#codigo-cliente').val();
+      peso = $('.peso-cliente').val();
+      altura = $('.altura-cliente').val();
+      maa = $('.maa-cliente').val();
+      mab = $('.mab-cliente').val();
+      mac = $('.mac-cliente').val();
+      obs = $('.observacao-cliente').val();
+
+      $.ajax({
+          url: ".././backend/novoAcompanhamento.php",
+          type: "POST",
+          data: {codigo_cliente: codigo_cliente, peso:peso, altura:altura, maa:maa, mab:mab, mac:mac, obs:obs},
+          success: function(result){
+		      	alert(result)
+          },
+          error: function(error){
+			      alert('Error '+ error);
+          }
+      	});
+
+  })
+</script>
 
 <?php } else { ?>
 <?php	header('Location: '.'erro404.php'); ?>
