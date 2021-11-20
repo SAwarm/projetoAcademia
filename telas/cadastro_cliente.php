@@ -133,6 +133,8 @@
        
         
         -->
+        <input class="inputUpdate2" name="inputHiddenEndereco" value="" type="hidden">
+				<input class="inputUpdate" value="" type="hidden">
         <button type="submit" style="background-color: #2F4F4F; color: white;" class="btn btn-primary btn-enviar-dados-clientes">Enviar</button>
         </fieldset>
       </form><br>
@@ -212,9 +214,12 @@
 			e.preventDefault();
 			varMensangem += " Telefone,"
 		}
-		varNovaMensagem = varMensangem.slice(0, -1);
-		$(".text-mensagem").html("Digite os campos de: " + varNovaMensagem)
-		$('.modalMensagem').modal('show');
+
+    if(varMensangem == ""){
+      varNovaMensagem = varMensangem.slice(0, -1);
+      $(".text-mensagem").html("Digite os campos de: " + varNovaMensagem)
+      $('.modalMensagem').modal('show');
+    }
   });
 
   $( ".text-buscar" ).keyup(function() {
@@ -254,6 +259,10 @@
           data: {q : $(this).attr('data-id-edit'), action: "popularCampos"},
           success: function(result){
             jq_json_obj = $.parseJSON(result);
+
+            $('.inputUpdate').attr("name", 'inputHidden');
+            $('.inputUpdate').val(jq_json_obj[0]);
+            $('.inputUpdate2').val(jq_json_obj['endereco']);
             
             $('#nome_cliente').val(jq_json_obj['nome'])
             $('#nascimento_cliente').val(jq_json_obj['data_nasc'])

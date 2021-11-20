@@ -117,8 +117,8 @@
     
                 $idInserido = mysqli_insert_id($link);
     
-                $sql2 = "INSERT INTO funcionario (nome, data_nasc, rg, cpf, foto, email, fone, obs, genero, endereco, senha) 
-                VALUES ('$nome_funcionario', '$nascimento_funcionario', '$rg_funcionario', '$cpf_funcionario', '$nameFoto', '$email_funcionario', '$telefone_funcionario', 
+                $sql2 = "INSERT INTO funcionario (nome, data_nasc, rg, cpf, email, fone, obs, genero, endereco, senha) 
+                VALUES ('$nome_funcionario', '$nascimento_funcionario', '$rg_funcionario', '$cpf_funcionario', '$email_funcionario', '$telefone_funcionario', 
                 '$observacao_funcionario', '$genero_funcionario', '$idInserido', '$senha_funcionario')";
     
                 mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro");
