@@ -45,28 +45,14 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Rua</th>
-      <th scope="col">Número</th>
-      <th scope="col">Bairro</th>
-      <th scope="col">Cidade</th>
-      <th scope="col">Estado</th>
+      <th scope="col">Nome Cliente</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Data Adicionado</th>
+      <th scope="col">Opções</th>
     </tr>
   </thead>
-  <?php if ($result) { 
-    while($row = mysqli_fetch_array($result)) { ?>
-  <tbody>
-    <tr>
-      <th scope="row"><?php echo $row['cod'] ?></th>
-      <td><?php echo $row ['rua']; ?></td>
-      <td><?php echo $row ['numero']; ?> </td>
-      <td><?php echo $row ['bairro']; ?> </td>
-      <td><?php echo $row ['cidade']; ?> </td>
-      <td><?php echo $row ['estado']; ?> </td>
-    </tr>
-    
+  <tbody class="tableAcompanhamento">
   </tbody>
-  <?php } ?>
-<?php } ?>
 </table>
    </div>
   </div>
@@ -127,11 +113,17 @@
 </html>
 
 <script>
+
+  $(document).ready(function(){
+    reloadTable()
+  })
+
   $(document).on("click", ".btn-novo-acompanhamento", function(e) {
       $('#modalAcompanhamento').modal('show');
   })
 
   $(document).on("click", ".btn-salvar-acompanhamento", function(e) {
+      
       codigo_cliente = $('#codigo-cliente').val();
       peso = $('#peso-cliente').val();
       altura = $('#altura-cliente').val();
@@ -139,14 +131,18 @@
       mab = $('#mab-cliente').val();
       mac = $('#mac-cliente').val();
       obs = $('#observacao-cliente').val();
-
-      $.ajax({
-          url: ".././backend/novoAcompanhamento.php",
+      id = $(this).attr('data-id');
+      
+      if(id != undefined){
+        
+        $.ajax({
+          url: ".././backend/updateAcompanhamento.php",
           type: "POST",
-          data: {codigo_cliente: codigo_cliente, peso:peso, altura:altura, maa:maa, mab:mab, mac:mac, obs:obs},
+          data: {id: id, codigo_cliente: codigo_cliente, peso:peso, altura:altura, maa:maa, mab:mab, mac:mac, obs:obs},
           success: function(result){
 		      	if(result == "true"){
               alert("Acompanhamento salvo com sucesso!")
+              reloadTable()
             }else{
               alert("Erro ao inserir acompanhamento!")
             }
@@ -156,21 +152,75 @@
           }
       	});
 
+      }else{
+        $.ajax({
+          url: ".././backend/novoAcompanhamento.php",
+          type: "POST",
+          data: {codigo_cliente: codigo_cliente, peso:peso, altura:altura, maa:maa, mab:mab, mac:mac, obs:obs},
+          success: function(result){
+		      	if(result == "true"){
+              alert("Acompanhamento salvo com sucesso!")
+              reloadTable()
+            }else{
+              alert("Erro ao inserir acompanhamento!")
+            }
+          },
+          error: function(error){
+			      alert('Error '+ error);
+          }
+      	});
+      }
   })
 
   function reloadTable(){
     $.ajax({
           url: ".././backend/select_acompanhamento.php",
           type: "POST",
-          data: {},
           success: function(result){
-            
+            jq_json_obj = $.parseJSON(result);
+				    cont = jq_json_obj.length;
+            cols = "";
+            for(i = 0; i < cont; i++){
+              cols +='<tr><td>'+jq_json_obj[i][0]+'</td><td>'+jq_json_obj[i]["nome"]+'</td><td>'+jq_json_obj[i]["cpf"]+'</td><td>'+jq_json_obj[i]["data_acompanhamento"]+'</td>'+
+              '<td><button type="button" data-id-edit="'+jq_json_obj[i][0]+'" style="margin-right: 10px;" class="btn btn-success btn-edit"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger btn-exclude"  data-id="'+jq_json_obj[i][0]+'"><i class="fas fa-times-circle"></i></button></td></tr>';
+            }
+          $(".tableAcompanhamento").html(cols);
           },
           error: function(error){
 			      alert('Error '+ error);
           }
-      	});
+    });
   }
+
+  $(document).on("click", ".btn-edit", function(e) {
+    cod = $(this).attr('data-id-edit');
+
+    $.ajax({
+          url: ".././backend/select_acompanhamento.php",
+          type: "POST",
+          data: {q: cod},
+          success: function(result){
+
+            jq_json_obj = $.parseJSON(result);
+				    cont = jq_json_obj.length;
+            cols = "";
+            for(i = 0; i < cont; i++){
+              $('.btn-salvar-acompanhamento').attr('data-id', jq_json_obj[i][0])
+              $('#codigo-cliente').val(jq_json_obj[i]['cod']);
+              $('#peso-cliente').val(jq_json_obj[i]['peso']);
+              $('#altura-cliente').val(jq_json_obj[i]['altura']);
+              $('#maa-cliente').val(jq_json_obj[i]['maa']);
+              $('#mab-cliente').val(jq_json_obj[i]['mab']);
+              $('#mac-cliente').val(jq_json_obj[i]['mac']);
+              $('#observacao-cliente').val(jq_json_obj[i]['obs']);
+            }
+
+          },
+          error: function(error){
+			      alert('Error '+ error);
+          }
+    });
+  })
 </script>
 
 <?php } else { ?>
