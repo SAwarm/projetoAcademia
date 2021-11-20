@@ -105,7 +105,7 @@
               
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary btn-salvar-acompanhamento" data-dismiss="modal">Salvar</button>
+						<button type="button" class="btn btn-secondary btn-salvar-acompanhamento" data-id="" data-dismiss="modal">Salvar</button>
 						<!--button type="button" class="btn btn-primary"></button-->
 					</div>
 				</div>
@@ -120,6 +120,8 @@
 
   $(document).on("click", ".btn-novo-acompanhamento", function(e) {
       $('#modalAcompanhamento').modal('show');
+      $('.modal-title').html('Cadastro Novo Acompanhamento');
+      $('.btn-salvar-acompanhamento').attr('data-id', "");
   })
 
   $(document).on("click", ".btn-salvar-acompanhamento", function(e) {
@@ -132,8 +134,8 @@
       mac = $('#mac-cliente').val();
       obs = $('#observacao-cliente').val();
       id = $(this).attr('data-id');
-      
-      if(id != undefined){
+
+      if(id != ""){
         
         $.ajax({
           url: ".././backend/updateAcompanhamento.php",
@@ -141,10 +143,10 @@
           data: {id: id, codigo_cliente: codigo_cliente, peso:peso, altura:altura, maa:maa, mab:mab, mac:mac, obs:obs},
           success: function(result){
 		      	if(result == "true"){
-              alert("Acompanhamento salvo com sucesso!")
+              alert("Alteração dos dados feita com sucesso!")
               reloadTable()
             }else{
-              alert("Erro ao inserir acompanhamento!")
+              alert("Erro ao alterar o acompanhamento!")
             }
           },
           error: function(error){
@@ -214,6 +216,9 @@
               $('#mac-cliente').val(jq_json_obj[i]['mac']);
               $('#observacao-cliente').val(jq_json_obj[i]['obs']);
             }
+
+            $('#modalAcompanhamento').modal('show');
+            $('.modal-title').html('Editando Dados');
 
           },
           error: function(error){
