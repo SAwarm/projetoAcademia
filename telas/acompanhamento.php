@@ -25,7 +25,7 @@
   <div class="row">
     <div class="col-sm-12">
     
-    <h2>Cadastro de clientes</h2>
+    <h2>Cadastro de Acompanhamentos</h2>
    
      <button class="btn btn-novo-acompanhamento" style="background-color: #2F4F4F; color: white; margin: 20px;">Novo Acompanhamento</button>
       <span style="margin-left: 40%;">Buscar Acompanhamento: <input type="text" placeholder="Digite o nome do cliente" class="text-buscar" name="text-buscar"></span>
@@ -133,19 +133,23 @@
 
   $(document).on("click", ".btn-salvar-acompanhamento", function(e) {
       codigo_cliente = $('#codigo-cliente').val();
-      peso = $('.peso-cliente').val();
-      altura = $('.altura-cliente').val();
-      maa = $('.maa-cliente').val();
-      mab = $('.mab-cliente').val();
-      mac = $('.mac-cliente').val();
-      obs = $('.observacao-cliente').val();
+      peso = $('#peso-cliente').val();
+      altura = $('#altura-cliente').val();
+      maa = $('#maa-cliente').val();
+      mab = $('#mab-cliente').val();
+      mac = $('#mac-cliente').val();
+      obs = $('#observacao-cliente').val();
 
       $.ajax({
           url: ".././backend/novoAcompanhamento.php",
           type: "POST",
           data: {codigo_cliente: codigo_cliente, peso:peso, altura:altura, maa:maa, mab:mab, mac:mac, obs:obs},
           success: function(result){
-		      	alert(result)
+		      	if(result == "true"){
+              alert("Acompanhamento salvo com sucesso!")
+            }else{
+              alert("Erro ao inserir acompanhamento!")
+            }
           },
           error: function(error){
 			      alert('Error '+ error);
@@ -153,6 +157,20 @@
       	});
 
   })
+
+  function reloadTable(){
+    $.ajax({
+          url: ".././backend/select_acompanhamento.php",
+          type: "POST",
+          data: {},
+          success: function(result){
+            
+          },
+          error: function(error){
+			      alert('Error '+ error);
+          }
+      	});
+  }
 </script>
 
 <?php } else { ?>
