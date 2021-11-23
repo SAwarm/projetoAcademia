@@ -29,18 +29,14 @@
         <label for="senha">Senha:</label>
         <input type="password" class="form-control" id="senha" placeholder="Insira sua senha" name="senha">
       </div>
-      <div class="form-group form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="remember"> Lembrar
-        </label>
-      </div>
+     
     <div>
     <button type="button" class="btn btn-primary btn-logar-sistema">Enviar</button>
 
     </div>
     
     </form>
-    
+    <br><br><br>
     </div>
     </div>
   </div>
