@@ -205,7 +205,7 @@
 
             jq_json_obj = $.parseJSON(result);
 				    cont = jq_json_obj.length;
-            cols = "";
+            cols = "";  
             for(i = 0; i < cont; i++){
               $('.btn-salvar-acompanhamento').attr('data-id', jq_json_obj[i][0])
               $('#codigo-cliente').val(jq_json_obj[i]['cod']);
