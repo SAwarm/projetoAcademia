@@ -15,13 +15,13 @@
 <body>
   <?php include('telas/title.php'); ?>
 
-  <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
+  <div class="container" style="margin-top: 5%; margin-bottom: 5%; width: 40%;">
     <div class="row">
       <div class="col-md-12">
-      
+      <br><br><br>
       <h2>Login</h2>
     <form>
-      <div class="form-group">
+      <div class="form-group" >
         <label for="email">Email:</label>
         <input type="email" class="form-control" id="email" placeholder="Digite seu email" name="email">
       </div>
@@ -36,7 +36,7 @@
     </div>
     
     </form>
-    <br><br><br> <br><br><br>
+    <br><br><br> 
     </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
   </div>
 </div>
   <div class="jumbotron text-center" style="margin-bottom: 0;">
-    <p>JR Fitness system</p>
+    <p>Jr Fitness system</p>
     <p>Sistema de controle de clientes</p>
   </div>
   </body>

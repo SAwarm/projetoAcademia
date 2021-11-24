@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2F4F4F;"> 
-    <a class="navbar-brand" href="">JR Fitness</a>
+    <a class="navbar-brand" href="">Jr Fitness</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>

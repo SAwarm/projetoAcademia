@@ -163,7 +163,7 @@
 </div>			
 
 <div class="jumbotron text-center" style="margin-bottom: 0;">
-  <p>JR Fitness system</p>
+  <p>Jr Fitness system</p>
   <p>Sistema de controle de clientes</p>
 </div>
 
