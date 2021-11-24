@@ -114,14 +114,14 @@
    <div class="col-sm-6">
    		<p>Buscar pelo nome: <input type="text" placeholder="Digite o nome do funcionário" class="text-buscar" name="text-buscar"></p>
 		<?php
-				//include('./../backend/conexao.php');
+				include('./../backend/conexao.php');
 				
-				//if (!$link) {
-				//	die('Não foi possível conectar: ' . mysqli_error());
-				//}
+				if (!$link) {
+					die('Não foi possível conectar: ' . mysqli_error());
+				}
 				
-				//$query = "SELECT * from endereco LIMIT 10";
-				//$result = mysqli_query ($link, $query);
+				$query = "SELECT * from funcionario LIMIT 10";
+				$result = mysqli_query ($link, $query);
 
 		?>
 		<table class="table">
@@ -133,12 +133,19 @@
 				<th scope="col">Ações</th>
 				</tr>
 			</thead>
-			<?php //if ($result) { 
-				//while($row = mysqli_fetch_array($result)) { ?>
+			<?php if ($result) { 
+				while($row = mysqli_fetch_array($result)) { ?>
 					<tbody id="popularDados">
+						<tr>
+						<td><?php echo $row['cod']; ?></td>
+						<td><?php echo $row['nome']; ?></td>
+						<td><?php echo $row['cpf']; ?></td>
+						<td><button type="button" style="margin-right: 10px;" class="btn btn-success btn-edit" data-id-edit="<?php echo $row['cod'] ?>"><i class="far fa-edit"></i></button>
+						<button type="button" class="btn btn-danger btn-exclude" data-id-exclude="<?php echo $row['cod'] ?>" ><i class="fas fa-times-circle"></i></button></td></tr>
+
 					</tbody>
-				<?php// } ?>
-			<?php //} ?>
+				<?php } ?>
+			<?php } ?>
 		</table>
    </div>
   </div>
