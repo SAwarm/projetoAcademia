@@ -234,7 +234,6 @@
           data: {q : $('.text-buscar').val(), action: null},
           success: function(result){
 			cols = "";
-      reloadTable()
 			if(result == "null"){
 				cols += '<td scope="row"></td>';
 				reloadTable()
