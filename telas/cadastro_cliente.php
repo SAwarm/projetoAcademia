@@ -153,7 +153,7 @@
 				$result = mysqli_query ($link, $query);
 
 		?>
-		<table class="table">
+		<table class="table table-cliente">
 			<thead>
 				<tr>
 				<th scope="col">Id</th>
@@ -234,8 +234,41 @@
           data: {q : $('.text-buscar').val(), action: null},
           success: function(result){
 			cols = "";
+      $(".table-cliente > tbody").empty();
+
+      if($('.text-buscar').val() == ""){
+        $.ajax({
+          url: ".././backend/buscarClientesTable.php",
+          type: "POST",
+          data: {q : $('.text-buscar').val(), action: null},
+          success: function(result){
+			    cols = "";
+      
+          if(result == "null"){
+            cols = '<td scope="row"></td>';
+            $("#popularDados").html(cols);
+          }else{
+            jq_json_obj = $.parseJSON(result);
+            cont = jq_json_obj.length
+            for (x = 0; x < cont; x++){
+              cols += '<tr><td scope="row">'+jq_json_obj[x]['cod']+'</td>';
+              cols += '<td>'+jq_json_obj[x]['nome']+'</td>';
+              cols += '<td>'+jq_json_obj[x]['cpf']+'</td>';
+              cols += '<td><button type="button" data-id-edit="'+jq_json_obj[x]['cod']+'" style="margin-right: 10px;" class="btn btn-success btn-edit"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger btn-exclude"  data-id="'+jq_json_obj[x]['cod']+'"><i class="fas fa-times-circle"></i></button></td></tr>';
+
+              $("#popularDados").html(cols);
+            } 
+			    }
+
+          },
+          error: function(error){
+            console.log(error);
+          }
+      });
+
+      } 
 			if(result == "null"){
-				cols += '<td scope="row"></td>';
+				cols = '<td scope="row"></td>';
 				$("#popularDados").html(cols);
 			}else{
 				jq_json_obj = $.parseJSON(result);
