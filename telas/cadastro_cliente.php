@@ -257,7 +257,7 @@
               cols += '<td><button type="button" data-id-edit="'+jq_json_obj[x]['cod']+'" style="margin-right: 10px;" class="btn btn-success btn-edit"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger btn-exclude"  data-id="'+jq_json_obj[x]['cod']+'"><i class="fas fa-times-circle"></i></button></td></tr>';
 
               $("#popularDados").html(cols);
-            } 
+            }
 			    }
 
           },

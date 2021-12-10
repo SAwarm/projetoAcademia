@@ -9,7 +9,7 @@
     $q = $_POST['q'];
     
     if(!empty($q)){
-        $query = "DELETE * from funcionario where cod = '$q'";
+        $query = "DELETE from funcionario where cod = '$q'";
     }
 
     $result = mysqli_query($link, $query) or die("Erro ao tentar cadastrar registro");

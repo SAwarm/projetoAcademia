@@ -259,7 +259,7 @@
           type: "POST",
           data: {q : $(this).attr('data-id')},
           success: function(result){
-			alert(result)
+			alert('Excluído com sucesso');
           },
           error: function(error){
 			alert('Error '+ error);
