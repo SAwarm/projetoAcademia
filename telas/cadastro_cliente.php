@@ -43,7 +43,7 @@
           <option value="Feminino">Feminino</option>
           <option value="Outros">Outros</option>
         </select>
-          Outro: <input type="text" name="outrogenero">
+
         </p>
         <p >Tipo Físico:
         <select name="tipo_fisico" id="tipo_fisico" style="background-color: #DDDDDD;">
@@ -220,7 +220,7 @@
 			varMensangem += " Telefone,"
 		}
 
-    if(varMensangem == ""){
+    if(varMensangem != ""){
       varNovaMensagem = varMensangem.slice(0, -1);
       $(".text-mensagem").html("Digite os campos de: " + varNovaMensagem)
       $('.modalMensagem').modal('show');

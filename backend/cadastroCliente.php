@@ -70,7 +70,7 @@
         
                 mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro");
                 mysqli_close($link);
-                echo "Cliente cadastrado com sucesso!";
+                header("Location: ./../telas/cadastro_cliente.php");
         
             }else{
                 echo "Erro ao fazer o upload da foto!\n";
@@ -88,7 +88,7 @@
     
             mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro cliente");
             mysqli_close($link);
-            echo "Cliente cadastrado com sucesso!";
+            header("Location: ./../telas/cadastro_cliente.php");
         }
     }else{
         $nome = $_POST['nome_cliente'];
@@ -153,7 +153,7 @@
         
                 mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro");
                 mysqli_close($link);
-                echo "Cliente cadastrado com sucesso!";
+                header("Location: ./../telas/cadastro_cliente.php");
         
             }else{
                 echo "Erro ao fazer o upload da foto!\n";
@@ -170,7 +170,7 @@
     
             mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro");
             mysqli_close($link);
-            echo "Cliente cadastrado com sucesso!";
+            header("Location: ./../telas/cadastro_cliente.php");
         }
     }
    

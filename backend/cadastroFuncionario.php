@@ -27,10 +27,8 @@
         $bairro = $_POST['bairro'];
         $estado = $_POST['estado'];
 
-       // print_r($_POST);
-
-       $idUpdate = $_POST['inputHidden'];
-       $idUpdateEndereco = $_POST['inputHiddenEndereco'];
+        $idUpdate = $_POST['inputHidden'];
+        $idUpdateEndereco = $_POST['inputHiddenEndereco'];
 
        if(!empty($_FILES['userfile']['tmp_name'])){
             $uploaddir = './../files/';
@@ -56,7 +54,7 @@
 
                 mysqli_close($link);
 
-                echo "Funcionário cadastrado com sucesso!";
+                header("Location: ./../telas/cadastro_funcionario.php");
 
             }else{
                 echo "Erro ao fazer o upload da foto!\n";
@@ -76,7 +74,7 @@
 
             //mysqli_close($link);
 
-            echo "Funcionário cadastrado com sucesso!";
+            header("Location: ./../telas/cadastro_funcionario.php");
        }
 
     }else{
@@ -123,7 +121,7 @@
     
                 mysqli_query($link, $sql2) or die("Erro ao tentar cadastrar registro");
                 mysqli_close($link);
-                echo "Funcionário cadastrado com sucesso!";
+                header("Location: ./../telas/cadastro_funcionario.php");
     
             }else{
                 echo "Erro ao fazer o upload da foto!\n";

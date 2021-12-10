@@ -14,4 +14,4 @@
 
     $result = mysqli_query($link, $query) or die("Erro ao tentar cadastrar registro");
 
-    echo "Excluído com sucesso";
+    header("Location: ./../telas/cadastro_funcionario.php");

@@ -38,7 +38,6 @@
 				<option value="Masculino">Masculino</option>
 				<option value="Feminino">Feminino</option>
 			</select>
-				Outro: <input type="text" name="outrogenero">
 			</p>
 			<p>E-mail: <input type="text" placeholder=" Digite o e-mail do cliente" id="email_funcionario" name="email_funcionario"></p>
 			<p>Telefone: <input type="text" placeholder=" Digite o telefone do cliente" id="telefone_funcionario" name="telefone_funcionario"></p>
