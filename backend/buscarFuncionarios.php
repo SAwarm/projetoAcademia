@@ -6,9 +6,7 @@
     	die('Não foi possível conectar: ' . mysqli_error());
     }
 
-    $action = $_POST['action'];
-
-    if(!empty($action)){
+    if(!empty($_POST['action'])){
         $q = $_POST['q'];
     
         if(!empty($q)){
@@ -19,7 +17,6 @@
 
         $row = mysqli_fetch_array($result);
 
-        //print_r($row);
         echo json_encode($row);
     }else{
         $q = $_POST['q'];

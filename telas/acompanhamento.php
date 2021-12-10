@@ -226,6 +226,34 @@
           }
     });
   })
+
+  $( ".text-buscar" ).keyup(function() {
+		$.ajax({
+          url: ".././backend/buscarAcompanhamento.php",
+          type: "POST",
+          data: {q : $('.text-buscar').val(), action: null},
+          success: function(result){
+			cols = "";
+			if(result == "null"){
+				cols += '<td scope="row"></td>';
+				reloadTable()
+			}else{
+				jq_json_obj = $.parseJSON(result);
+				cont = jq_json_obj.length
+				cols = "";
+          for(i = 0; i < cont; i++){
+            cols +='<tr><td>'+jq_json_obj[i][0]+'</td><td>'+jq_json_obj[i]["nome"]+'</td><td>'+jq_json_obj[i]["cpf"]+'</td><td>'+jq_json_obj[i]["data_acompanhamento"]+'</td>'+
+            '<td><button type="button" data-id-edit="'+jq_json_obj[i][0]+'" style="margin-right: 10px;" class="btn btn-success btn-edit"><i class="far fa-edit"></i></button><button type="button" class="btn btn-danger btn-exclude"  data-id="'+jq_json_obj[i][0]+'"><i class="fas fa-times-circle"></i></button></td></tr>';
+          }
+          $(".tableAcompanhamento").html(cols);
+			}
+
+      },
+          error: function(error){
+            console.log(error);
+          }
+      });
+	});
 </script>
 
 <?php } else { ?>

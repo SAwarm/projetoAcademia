@@ -271,12 +271,13 @@
 		$.ajax({
           url: ".././backend/buscarFuncionarios.php",
           type: "POST",
-          data: {q : $('.text-buscar').val(), action: null},
+          data: {q : $('.text-buscar').val()},
           success: function(result){
 			cols = "";
 			if(result == "null"){
 				cols += '<td scope="row"></td>';
 				$("#popularDados").html(cols);
+				cols = "";
 			}else{
 				jq_json_obj = $.parseJSON(result);
 				cont = jq_json_obj.length
