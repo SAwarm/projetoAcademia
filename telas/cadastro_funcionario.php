@@ -46,26 +46,10 @@
 			<br>
 			<p>Endereço: <input type="button" class="btn" style="background-color: #2F4F4F; color: white;" data-toggle="modal" data-target="#modalEndereco" value="Abrir caixa de informações" placeholder="Endereço">
 			<p>Link da foto: <input name="userfile" type="file" /></p>
-			<!--p style="font-size: 20px;">Estado:
-				<select name= "seleção" style="background-color: #DDDDDD;">
-					<option value="0">selecione</option>
-					<option value="Santa Catarina">Santa Catarina</option>
-					<option value="Rio Grande do Sul">Rio Grande do Sul</option>
-				</select>
-				Outro: <input type="text" name="outra_funcionario"-->
-				</p>
 				</p>
 				<input class="inputUpdate2" name="inputHiddenEndereco" value="" type="hidden">
 				<input class="inputUpdate" value="" type="hidden">
 				<button type="submit" style="background-color: #2F4F4F; color: white;" class="btn btn-primary btn-enviar-dados-funcionarios">Enviar</button>
-			<!--p style="font-size: 20px;">Cidade: <input type="text" placeholder=" Digite a cidade do funcionário" name="cidade_funcionario"></p>
-			<p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do funcionário" name="bairro_funcionario"></p>
-			<P style="font-size: 20px;">Rua: <input type="text" placeholder=" Digite a rua do funcionário" name="rua_funcionario"></P>
-			<P style="font-size: 20px;">Número: <input type="text" placeholder=" Digite o número da casa" name="numerocasa_funcionario"></P>
-			<p style="font-size: 20px;">Link da foto: <input type="text" placeholder=" Digite o link da foto" name="foto_funcionario"></p>
-			<p style="font-size: 20px;">E-mail: <input type="text" placeholder=" Digite o e-mail do funcionário" name="email_funcionario"></p>
-			<p style="font-size: 20px;">Telefone: <input type="text" placeholder=" Digite o telefone do funcionário" name="telefone_funcionario" ></p>
-			<p style="font-size: 20px;">Observação: <input type="text" placeholder=" Digite uma observação" name="observação_funcionario"></p-->
 			<div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -116,7 +100,7 @@
 				include('./../backend/conexao.php');
 				
 				if (!$link) {
-					die('Não foi possível conectar: ' . mysqli_error());
+					die('Não foi possível conectar: ' . mysqli_error($conn));
 				}
 				
 				$query = "SELECT * from funcionario LIMIT 10";
