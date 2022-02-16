@@ -113,23 +113,6 @@
           </div>
         </div>
       </div>
-        <!--
-        <p style="text-transform: uppercase; font-size: 20px;"><strong>Endereço</strong></p>
-        <p style="font-size: 20px;">Estado:
-              <select name= "seleção" style="background-color: #DDDDDD;">
-                <option value="0">selecione</option>
-                <option value="Santa Catarina">Santa Catarina</option>
-                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-              </select>
-              outra: <input type="text" name="outra">
-          </p>
-          </p>
-          <p style="font-size: 20px;">Cidade: <input type="text" placeholder=" Digite a cidade do cliente" name="cidade_cliente"></p>
-          <p style="font-size: 20px;">Bairro: <input type="text" placeholder=" Digite o bairro do cliente" name="bairro_cliente"></p>
-          <P style="font-size: 20px;">Rua: <input type="text" placeholder=" Digite a rua do cliente" name="rua_cliente"></P>
-          <P style="font-size: 20px;">Número: <input type="text" placeholder=" Digite o número do cliente" name="numerocasa_cliente"></P>
-         
-        </p>
        
         
         -->
@@ -146,7 +129,7 @@
 				include('./../backend/conexao.php');
 				
 				if (!$link) {
-					die('Não foi possível conectar: ' . mysqli_error());
+					die('Não foi possível conectar: ');
 				}
 				
 				$query = "SELECT * from cliente LIMIT 10";
