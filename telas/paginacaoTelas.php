@@ -14,7 +14,7 @@
         <li class="nav-item">
             <a class="nav-link" href="acompanhamento.php">Acompanhamento</a>
         </li>
-        <li class="nav-item" style="margin-left: ;">
+        <li class="nav-item">
             <a class="nav-link" href="sair.php">Sair</a>
         </li> 
         </ul>
