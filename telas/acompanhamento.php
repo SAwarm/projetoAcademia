@@ -34,7 +34,7 @@
     include('./../backend/conexao.php');
     
       if (!$link) {
-        die('Não foi possível conectar: ' . mysqli_error());
+        die('Não foi possível conectar: ');
     }
     
     $query = "SELECT * from endereco";
