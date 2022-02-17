@@ -17,4 +17,3 @@
         $_SESSION['nome'] = $nome;
         echo "Bem vindo ".$nome;
     }
-?>
