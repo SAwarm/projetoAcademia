@@ -11,7 +11,7 @@ class indexController extends Action
 
     public function index()
     {
-        $this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
+        //$this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
 
         $this->render('index');
     }
