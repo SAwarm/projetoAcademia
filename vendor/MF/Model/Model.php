@@ -4,7 +4,8 @@ namespace MF\Model;
 
 use PDO;
 
-abstract class Model {
+abstract class Model
+{
 
     protected $db;
 
