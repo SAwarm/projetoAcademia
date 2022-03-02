@@ -2,7 +2,8 @@
 
 namespace MF\Controller;
 
-abstract class Action {
+abstract class Action
+{
 
     protected $view;
 
@@ -15,8 +16,8 @@ abstract class Action {
     {
         $this->view->page = $view;
 
-        if (file_exists("./../App/Views/".$layout.".phtml")) {
-            require_once "./../App/Views/".$layout.".phtml";
+        if (file_exists("./../App/Views/" . $layout . ".phtml")) {
+            require_once "./../App/Views/" . $layout . ".phtml";
         }
 
         return $this->content();
@@ -30,6 +31,6 @@ abstract class Action {
 
         $actual_class = strtolower(str_replace('Controller', '', $actual_class));
 
-        require_once "./../App/Views/".$actual_class."/".$this->view->page.".phtml";
+        require_once "./../App/Views/" . $actual_class . "/" . $this->view->page . ".phtml";
     }
 }
