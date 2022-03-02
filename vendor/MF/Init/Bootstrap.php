@@ -2,7 +2,8 @@
 
 namespace MF\Init;
 
-abstract class Bootstrap {
+abstract class Bootstrap
+{
 
     private $routes;
 
@@ -28,10 +29,10 @@ abstract class Bootstrap {
     {
         foreach ($this->getRoutes() as $key => $route) {
             if ($url == $route['route']) {
-                $class = "App\\Controllers\\".ucfirst($route['controller']);
+                $class = "App\\Controllers\\" . ucfirst($route['controller']);
 
                 $controller = new $class;
-                
+
                 $action = $route['action'];
 
                 $controller->$action();
