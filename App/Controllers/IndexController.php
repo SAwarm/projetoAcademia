@@ -3,15 +3,15 @@
 namespace App\Controllers;
 
 //* recurses
+use App\Controllers\RulesView\RulesViewController;
 use MF\Model\Container;
 use MF\Controller\Action;
 
 class indexController extends Action
 {
-
     public function index()
     {
-        //$this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
+        RulesViewController::getTitle($this, 'Login - Jr Fitness System');
 
         $this->render('index');
     }
