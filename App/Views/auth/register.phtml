@@ -1,0 +1,25 @@
+<?php
+    require_once(__DIR__ . "./../components/header.phtml");
+?>
+
+<body id="corpo">
+  <div class="container mb-5">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Digite seu email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" class="form-control" id="password" placeholder="Insira sua senha" name="senha">
+      </div>
+      <button type="submit" class="btn" style="background-color: #2F4F4F; color: white;">Registrar</button>
+    </form>
+  </div>
+
+<?php
+    require(__DIR__ . "./../components/footer.phtml");
+?>
+
+</body>
