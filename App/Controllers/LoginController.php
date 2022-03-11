@@ -9,11 +9,8 @@ use MF\Controller\Action;
 
 class LoginController extends Action
 {
-
     public function login()
     {
-        echo $_POST['email'];
-
-        echo $_POST['password'];
+        
     }
 }
