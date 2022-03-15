@@ -14,9 +14,15 @@ class Register extends Model
     private $email;
 
     private $password;
+
+    private $cpf;
     
     public function store()
     {
-           
+        $query = "INSERT INTO
+                    collaborators (name, email, password, cpf)
+                VALUES (:name, :email, :password, :cpf)";
+
+        $stmt = $this->db->prepare($query);
     }
 }
